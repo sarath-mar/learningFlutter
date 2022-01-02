@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:login/screen/bottom_sheet.dart';
 import 'package:login/screen/login.dart';
 import 'package:login/screen/splash_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -62,7 +63,12 @@ class HomeScreen extends StatelessWidget {
                     FloatingActionButton(
                         onPressed: () {
                           counterChange();
-                        }, child: Icon(Icons.add))
+                        }, child: Icon(Icons.add)), 
+                    TextButton(onPressed: (){
+                        goToBottomPage(context); 
+                    }, child: Text("Go to bottom sheet",
+                     style: TextStyle(fontSize: 20)), 
+                    )
                   ]),
             )
             
@@ -81,8 +87,14 @@ class HomeScreen extends StatelessWidget {
     }));
   }
   counterChange(){
-    print("x"); 
+  
     _count.value++;
     print(_count); 
   }
+  goToBottomPage(ctx){
+     Navigator.of(ctx).push( 
+        MaterialPageRoute(builder: (context){ 
+          return BottomSheetPage();  
+        }));  
+  }  
 }
