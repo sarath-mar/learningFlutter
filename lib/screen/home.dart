@@ -4,8 +4,8 @@ import 'package:login/screen/splash_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({Key? key}) : super(key: key);
-  final _count = 120;
+  HomeScreen({Key? key}) : super(key: key);
+  ValueNotifier <int>  _count = ValueNotifier(120);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -50,25 +50,22 @@ class HomeScreen extends StatelessWidget {
                         ],
                       ),
                     ),
+                    ValueListenableBuilder(
+                      valueListenable: _count, 
+                      builder: (BuildContext cnt, int newValue, Widget?child){
+                        return  Text(
+                            "Counter : $newValue",  
+                            style: TextStyle(fontSize: 20),
+                          ); 
+                      }
+                      ),
                     FloatingActionButton(
-                        onPressed: () {}, child: Icon(Icons.add))
+                        onPressed: () {
+                          counterChange();
+                        }, child: Icon(Icons.add))
                   ]),
             )
-            //   Text("Home",
-            //   style: TextStyle(fontSize: 40 ),),
-
-            //   Container(
-            //     color:Colors.red ,
-            //     child: Row(
-
-            //       mainAxisAlignment: MainAxisAlignment.center,
-            //       children: [
-
-            //         Text("Counter : "),
-            //         Text(_count.toString())
-            //       ],
-            //     ),
-            //   )
+            
           ],
         ),
       ),
@@ -82,5 +79,10 @@ class HomeScreen extends StatelessWidget {
     Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (cnt) {
       return SplashScreen();
     }));
+  }
+  counterChange(){
+    print("x"); 
+    _count.value++;
+    print(_count); 
   }
 }
