@@ -19,7 +19,7 @@ class _BottomNavigationPageState extends State<BottomNavigationPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text("Project x"),
-        actions: [
+        actions: [ 
           IconButton(
               onPressed: () {
                 print("back button");
