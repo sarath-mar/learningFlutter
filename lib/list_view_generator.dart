@@ -4,9 +4,12 @@ import 'package:login/student_function.dart';
 import 'package:login/student_model.dart';
 
 class ListViewComponent extends StatelessWidget {
+  
   ListViewComponent({Key? key}) : super(key: key);
+ 
   @override
   Widget build(BuildContext context) {
+    getStudent(); 
     return Container(
       child: ValueListenableBuilder( 
           valueListenable: studentList,
