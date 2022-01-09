@@ -19,7 +19,7 @@ class ListViewComponent extends StatelessWidget {
                   return 
                   // Text(newValue[index].name);
                   ListTile(
-                     
+                     leading: Text((index+1).toString()),
                     title:Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround, 
                       children: [
@@ -28,10 +28,14 @@ class ListViewComponent extends StatelessWidget {
                         Text(newValue[index].age), 
                       ],
                     ) ,
+                    trailing:IconButton(onPressed: (){
+                      print(index);
+                        deleteStudent(newValue[index].id);    
+                    }, icon: Icon(Icons.delete,color:Colors.red,)),  
                   );     
                 },
                 separatorBuilder: (context, index) {
-                  return Divider(); 
+                  return Divider( height: 1,);   
                 },
                 itemCount: newValue.length);   
           }), 

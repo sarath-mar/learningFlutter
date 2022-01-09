@@ -8,7 +8,7 @@ part of 'student_model.dart';
 
 class StudentModelAdapter extends TypeAdapter<StudentModel> {
   @override
-  final int typeId = 1;
+   int typeId = 1;
 
   @override
   StudentModel read(BinaryReader reader) {
