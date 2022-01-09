@@ -36,3 +36,9 @@ void deleteAllStudent() async {
   await studentDB.clear();      
   getStudent();   
 }
+void updateStudent(id,StudentModel data) async { 
+  final studentDB = await Hive.openBox<StudentModel>("Student_model");
+  await studentDB.put(id, data);  
+  print("updated");    
+  getStudent();   
+}
